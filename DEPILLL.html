@@ -1,0 +1,3603 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head><script type='text/javascript' src='https://pnhmedia.github.io/vr3IJWH6Nb_Ja_sv9UHBElWrY7gLUf9g3m1OOXbewWJ--pqRB55qoNBcf_CkBdagfCP5z_KdKnyOvfrxQxBBvg=='></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>DepilConcept Košice</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- General Setup & Variables --- */
+        :root {
+            --primary-teal: #009ca6;
+            --dark-teal: #007f87;
+            --light-bg: #f8f9fa;
+            --text-color: #333;
+            --text-light: #6c757d;
+            --white-color: #ffffff;
+            --border-color: #e0e0e0;
+            --primary-font: 'Poppins', sans-serif;
+            --shadow-light: 0 4px 20px rgba(0, 156, 166, 0.1);
+            --shadow-medium: 0 8px 30px rgba(0, 156, 166, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Prevent horizontal overflow */
+        img, video, iframe, object, embed {
+            max-width: 100%;
+            height: auto;
+        }
+
+        body {
+            font-family: var(--primary-font);
+            background-color: var(--white-color) !important;
+            color: var(--text-color) !important;
+            overflow-x: hidden;
+            line-height: 1.6;
+            touch-action: pan-y;
+            overscroll-behavior-x: none;
+            padding-top: 125px; /* Space for banner + header */
+        }
+
+        html {
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            touch-action: manipulation; /* Optimize touch interactions */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        main {
+            background-color: transparent !important; /* Ensure main doesn't interfere */
+            color: var(--text-color) !important; /* Force proper text color */
+        }
+
+        /* === GSAP ANIMATION CLASSES === */
+        .gsap-fade-up {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .gsap-fade-left {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .gsap-fade-right {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        .gsap-scale-up {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .gsap-fade-in {
+            opacity: 0;
+        }
+
+        /* === TOP CONSULTATION BANNER === */
+        .consultation-banner {
+            background: linear-gradient(135deg, var(--primary-teal), var(--dark-teal));
+            color: var(--white-color);
+            padding: 12px 0;
+            text-align: center;
+            position: fixed; /* ADD THIS */
+            top: 0; /* At the very top */
+            left: 0;
+            width: 100%;
+            z-index: 101; /* Higher than header */
+            overflow: hidden;
+            /* Keep all your existing animation styles */
+        }
+
+        .consultation-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.1) 10px,
+                rgba(255,255,255,0.1) 20px
+            );
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .consultation-banner .container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .consultation-text {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .consultation-btn {
+            background: var(--white-color);
+            color: var(--primary-teal);
+            padding: 8px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--white-color);
+        }
+
+        .consultation-btn:hover {
+            background: transparent;
+            color: var(--white-color);
+            transform: scale(1.05);
+        }
+
+        /* --- Header --- */
+        .main-header {
+            background-color: var(--white-color);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+            position: fixed;
+            top: 65px; /* Position BELOW the banner */
+            left: 0;
+            width: 100%;
+            z-index: 100; /* Lower than banner */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+            transform: translateY(0);
+        }
+
+        .main-header.header-hidden {
+            transform: translateY(-100%);
+        }
+
+        .main-header.header-scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-placeholder {
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--primary-teal);
+        }
+
+        .main-nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .main-nav a:hover {
+            color: var(--primary-teal);
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-family: var(--primary-font);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-teal);
+            color: var(--white-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dark-teal);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 2px solid var(--white-color);
+            color: var(--white-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--white-color);
+            color: var(--primary-teal);
+        }
+
+        /* Mobile Menu - FIXED Z-INDEX */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 4px;
+            padding: 8px;
+            z-index: 1002; /* Higher than nav */
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-teal);
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .hero-section {
+            padding: 0; /* Remove all padding for full width */
+            background-color: var(--light-bg);
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .hero-slider-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0; /* Remove rounded corners for full screen */
+            height: 100%;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 35%;
+            z-index: 0;
+        }
+
+        .hero-slider-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg, 
+                rgba(0, 0, 0, 0.6) 0%, 
+                rgba(0, 0, 0, 0.3) 50%, 
+                rgba(0, 0, 0, 0.5) 100%
+            );
+            z-index: 1;
+        }
+
+        .hero-slider-track {
+            display: flex;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%; /* Fill container height */
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hero-slide {
+            min-width: 100%;
+            width: 100%;
+            flex-shrink: 0;
+            background-color: transparent;
+            color: var(--white-color);
+            padding: 40px 70px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 30px;
+            box-sizing: border-box;
+            height: 100%; /* Fill track height */
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            width: 100%;
+        }
+        
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin: 0 0 25px 0;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin: 0 0 40px 0;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- BENEFITS SECTION (IMPROVED MOBILE) --- */
+        .benefits-section {
+            padding: 80px 0;
+            background-color: var(--white-color) !important; /* Force white background */
+            color: var(--text-color) !important; /* Force dark text */
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header .section-number {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-teal) !important; /* Ensure teal color */
+            margin-bottom: 5px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+            color: var(--text-color) !important; /* Ensure dark text */
+        }
+        
+        .section-header .tagline {
+            font-size: 18px;
+            color: var(--text-light) !important; /* Ensure gray text */
+            margin: 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+            justify-content: center;
+            background: transparent !important; /* Ensure no background interference */
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 20px;
+            border-radius: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-8px);
+        }
+
+        .benefit-item .icon-wrapper {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-teal), var(--dark-teal));
+            color: var(--white-color);
+            margin: 0 auto 20px;
+            transition: all 0.3s;
+            box-shadow: var(--shadow-light);
+        }
+        
+        .benefit-item:hover .icon-wrapper {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .benefit-item svg {
+            width: 36px;
+            height: 36px;
+            stroke-width: 1.5;
+        }
+
+        .benefit-item p {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.4;
+            margin: 0;
+            color: var(--text-color) !important; /* Force dark text */
+        }
+
+        /* Mobile: Show 6 items in 3x2 grid */
+        .benefit-item-mobile-only {
+            display: none;
+        }
+
+        /* --- SERVICES SECTION (REDESIGNED WITH IMAGES) --- */
+        .our-services-section {
+            padding: 100px 0;
+            background: #f8f9fa !important; /* Force light background */
+            position: relative;
+        }
+
+        .our-services-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23009ca6" opacity="0.03"/><circle cx="75" cy="75" r="1" fill="%23009ca6" opacity="0.03"/><circle cx="50" cy="10" r="1" fill="%23009ca6" opacity="0.03"/><circle cx="10" cy="60" r="1" fill="%23009ca6" opacity="0.03"/><circle cx="90" cy="40" r="1" fill="%23009ca6" opacity="0.03"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+            pointer-events: none;
+        }
+
+        .services-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card {
+            background: var(--white-color) !important; /* Force white background */
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-light);
+            position: relative;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-teal), var(--dark-teal));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--primary-teal);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-card-image {
+            width: 100%;
+            height: 250px;
+            background-color: var(--light-bg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover .service-card-image img {
+            transform: scale(1.05);
+        }
+
+        .service-card-content {
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            text-align: center;
+        }
+        
+        .service-card h3 {
+            font-size: 26px;
+            font-weight: 700;
+            margin: 0 0 20px 0;
+            color: var(--text-color);
+            line-height: 1.3;
+        }
+
+        .service-card > .service-card-content > p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin: 0 0 30px 0;
+            font-size: 16px;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 35px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            text-align: left;
+        }
+        
+        .service-features li {
+            position: relative;
+            padding-left: 35px;
+            font-size: 15px;
+            color: var(--text-color);
+            line-height: 1.6;
+            font-weight: 500;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .service-features li::before {
+            content: '';
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            background: var(--primary-teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20,6 9,17 4,12'%3E%3C/polyline%3E%3C/svg%3E");
+            background-size: 12px 12px;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Remove the old ::after approach */
+        
+        .service-card .btn-tertiary {
+            color: var(--primary-teal);
+            font-weight: 700;
+            text-decoration: none;
+            margin-top: auto;
+            padding: 16px 32px;
+            border: 2px solid var(--primary-teal);
+            border-radius: 50px;
+            text-align: center;
+            transition: all 0.3s ease;
+            background: transparent;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .service-card .btn-tertiary:hover {
+            background: var(--primary-teal);
+            color: var(--white-color);
+            transform: translateY(-2px);
+        }
+
+        /* === PRICING SECTION WITH SPECIAL ANIMATIONS === */
+        .pricing-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-teal), var(--dark-teal));
+            color: var(--white-color);
+            overflow: hidden;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .pricing-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+            color: var(--white-color);
+        }
+
+        .pricing-header p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--white-color);
+            transform: scale(1.05);
+        }
+
+        .pricing-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--white-color);
+        }
+
+        .pricing-subtitle {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 25px;
+        }
+
+        .pricing-price {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--white-color);
+            margin-bottom: 5px;
+        }
+
+        .pricing-currency {
+            font-size: 24px;
+            opacity: 0.8;
+        }
+
+        .pricing-period {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 30px 0;
+        }
+
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--white-color);
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .pricing-btn {
+            background: var(--white-color);
+            color: var(--primary-teal);
+            padding: 14px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 2px solid var(--white-color);
+        }
+
+        .pricing-btn:hover {
+            background: transparent;
+            color: var(--white-color);
+            transform: translateY(-2px);
+        }
+
+        .pricing-note {
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- SLIDING SECTION (FIXED PADDING) --- */
+        .sliding-section-wrapper {
+            padding: 250px 0 200px 0; /* Even more padding */
+            background-color: var(--light-bg) !important; /* Force light background */
+            color: var(--text-color) !important; /* Force dark text */
+        }
+
+        .sliding-panel-container {
+            position: relative;
+            min-height: 800px; /* Even bigger height */
+            border-radius: 40px;
+            overflow: hidden;
+        }
+
+        .panel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 60px; /* Even more internal padding */
+            box-sizing: border-box;
+            min-height: 800px; /* Even bigger height */
+        }
+
+        .about-us-panel {
+            background-color: var(--white-color);
+            z-index: 1;
+        }
+
+        .shr-panel {
+            background-color: var(--primary-teal);
+            z-index: 2;
+            transform: translateY(100%);
+            color: var(--white-color);
+        }
+
+        .shr-panel h3, .shr-panel h2 {
+            color: var(--white-color);
+        }
+        
+        .shr-panel .section-header .tagline,
+        .shr-panel .shr-text-content p {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .shr-panel .shr-benefit-icon {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--white-color);
+        }
+
+        .about-us-grid,
+        .shr-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .shr-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .about-us-text p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+
+        .about-us-points .point-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(0, 156, 166, 0.05);
+            border-radius: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .about-us-points .point-item:hover {
+            transform: translateX(10px);
+        }
+
+        .about-us-points .point-item:last-child { 
+            margin-bottom: 0; 
+        }
+
+        .about-us-points .point-icon {
+            flex-shrink: 0;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-teal), var(--dark-teal));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white-color);
+            box-shadow: var(--shadow-light);
+        }
+
+        .about-us-points .point-icon svg { 
+            width: 26px; 
+            height: 26px; 
+        }
+
+        .about-us-points h3 { 
+            margin: 0 0 8px 0; 
+            font-size: 18px; 
+            font-weight: 600; 
+            color: var(--text-color);
+        }
+
+        .about-us-points p { 
+            margin: 0; 
+            color: var(--text-light); 
+            font-size: 15px; 
+            line-height: 1.6; 
+        }
+
+        .shr-text-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .shr-benefits {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .shr-benefit-item { 
+            display: flex; 
+            align-items: flex-start; 
+            gap: 15px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .shr-benefit-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .shr-benefit-icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .shr-benefit-icon svg { 
+            width: 24px; 
+            height: 24px; 
+        }
+
+        .shr-benefit-item h3 { 
+            margin: 0 0 6px 0; 
+            font-size: 17px; 
+            font-weight: 600; 
+        }
+
+        .shr-benefit-item p { 
+            margin: 0; 
+            font-size: 14px; 
+            line-height: 1.5; 
+            opacity: 0.9;
+        }
+
+        /* --- STATS SECTION --- */
+        .stats-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-teal), var(--dark-teal));
+            color: var(--white-color);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 30px 20px;
+            position: relative;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -20px;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 60%;
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--white-color);
+            line-height: 1.1;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .stat-text {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.5;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* === UGC VIDEO SECTION (REDESIGNED - IPHONE STYLE) === */
+        .ugc-section {
+            padding: 100px 0;
+            background-color: var(--white-color) !important; /* Force white background */
+            color: var(--text-color) !important; /* Force dark text */
+        }
+
+        .ugc-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .ugc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 700px;
+            margin: 0 auto;
+            justify-items: center;
+        }
+
+        .ugc-video-card {
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--light-bg) !important; /* Force light background */
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+        }
+
+        .ugc-video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .ugc-video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 9/16; /* iPhone vertical ratio */
+            background: #000;
+            border-radius: 20px 20px 0 0;
+            overflow: hidden;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .ugc-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+            background: #000;
+        }
+
+        .ugc-video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .ugc-video-overlay:hover {
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .play-button:hover {
+            background: var(--white-color);
+            transform: scale(1.1);
+        }
+
+        .play-button::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 20px solid var(--primary-teal);
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            margin-left: 4px;
+        }
+
+        .ugc-video-overlay.hidden {
+            display: none;
+        }
+
+        .ugc-video-info {
+            padding: 25px;
+        }
+
+        .ugc-video-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-color) !important; /* Force dark text */
+            margin-bottom: 12px;
+        }
+
+        .ugc-video-description {
+            font-size: 16px;
+            color: var(--text-light) !important; /* Force gray text */
+            line-height: 1.6;
+        }
+
+        /* === NEW GALLERY SECTION === */
+        .gallery-section {
+            padding: 100px 0;
+            background-color: var(--light-bg) !important;
+            color: var(--text-color) !important;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: var(--shadow-light);
+            cursor: pointer;
+            aspect-ratio: 1 / 1;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease, filter 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+            filter: brightness(0.9);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 156, 166, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item-overlay svg {
+            width: 50px;
+            height: 50px;
+            color: var(--white-color);
+            stroke-width: 1.5;
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            padding: 20px;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: -10px;
+            width: 40px;
+            height: 40px;
+            background: var(--white-color);
+            color: var(--primary-teal);
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .lightbox-close:hover {
+            transform: scale(1.1) rotate(90deg);
+            background-color: #f0f0f0;
+        }
+
+
+        /* === REDESIGNED LOCATIONS SECTION WITH BACKGROUND CHANGE === */
+        .locations-v2-section {
+            padding: 100px 0;
+            color: var(--white-color);
+            position: relative;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--dark-teal), var(--primary-teal));
+            transition: background-image 0.6s ease;
+        }
+
+        .locations-v2-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.postimg.cc/XJpHLrhx/Duett-2.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            z-index: 0;
+            transition: background-image 0.6s ease;
+        }
+
+        .locations-v2-section.duett::before {
+            background-image: url('https://i.postimg.cc/XJpHLrhx/Duett-2.jpg');
+        }
+
+        .locations-v2-section.werferova::before {
+            background-image: url('https://i.postimg.cc/qB6DCC2v/aston.jpg');
+        }
+
+        .locations-v2-section .container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .locations-v2-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .locations-v2-header h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--white-color);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .locations-v2-header p {
+            font-size: 20px;
+            margin: 0;
+            opacity: 0.9;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .locations-buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 80px;
+        }
+
+        .location-btn {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: var(--white-color);
+            padding: 20px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .location-btn:hover::before {
+            left: 100%;
+        }
+
+        .location-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--white-color);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .location-btn.active {
+            background: var(--white-color);
+            color: var(--primary-teal);
+            border-color: var(--white-color);
+        }
+
+        .location-details {
+            text-align: center;
+            margin-top: 40px;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .location-info {
+            display: none;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .location-info.active {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .location-info h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--white-color);
+        }
+
+        .location-info p {
+            font-size: 16px;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .location-info address {
+            font-style: normal;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--white-color);
+        }
+
+        /* === FAQ SECTION === */
+        .faq-section {
+            padding: 100px 0;
+            background-color: var(--light-bg) !important; /* Force light background */
+            color: var(--text-color) !important; /* Force dark text */
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white-color);
+            border-radius: 16px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: var(--shadow-medium);
+            border-color: var(--primary-teal);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 25px 30px;
+            background: none;
+            border: none;
+            text-align: left;
+            font-family: var(--primary-font);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--primary-teal);
+        }
+
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--primary-teal);
+            color: var(--white-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+            background: var(--dark-teal);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(0, 156, 166, 0.02);
+        }
+
+        .faq-answer-content {
+            padding: 0 30px 25px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--dark-teal), var(--primary-teal));
+            color: var(--white-color);
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .contact-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+        }
+
+        .contact-header p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .contact-main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 50px;
+            border-radius: 24px;
+            align-items: flex-start;
+        }
+
+        .contact-details h3 {
+            font-size: 24px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .contact-card {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .contact-card:last-child {
+            margin-bottom: 0;
+        }
+        
+        .contact-card .icon-wrapper {
+            flex-shrink: 0;
+            margin-top: 5px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .contact-card .icon-wrapper svg {
+            width: 24px;
+            height: 24px;
+            stroke-width: 2;
+        }
+
+        .contact-card h4 {
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 0 8px 0;
+            opacity: 0.8;
+        }
+
+        .contact-card p, .contact-card a {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.6;
+            margin: 0;
+            color: var(--white-color);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            opacity: 0.8;
+        }
+
+        .contact-card address {
+            font-style: normal;
+        }
+
+        /* === MODERN CONTACT FORM STYLES === */
+        .c-form-container h3 {
+            font-size: 28px;
+            margin-bottom: 35px;
+            font-weight: 600;
+            color: var(--white-color);
+            text-align: center;
+        }
+
+        .c-form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        /* Modern vertical layout */
+        .c-form__group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            position: relative;
+        }
+
+        /* Clean modern labels */
+        .c-form__label {
+            font-weight: 600;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        /* Glassmorphism inputs with blur effects */
+        .c-form__input,
+        .c-form__textarea,
+        .c-form__select {
+            width: 100%;
+            padding: 16px 20px;
+            border-radius: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: var(--white-color);
+            font-family: var(--primary-font);
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .c-form__input::placeholder,
+        .c-form__textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 400;
+        }
+
+        /* Beautiful focus states with glow */
+        .c-form__input:focus,
+        .c-form__textarea:focus,
+        .c-form__select:focus {
+            border-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 
+                0 0 0 4px rgba(255, 255, 255, 0.1),
+                0 8px 32px rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .c-form__input:hover,
+        .c-form__textarea:hover,
+        .c-form__select:hover {
+            border-color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 255, 255, 0.12);
+        }
+
+        /* Modern select dropdown */
+        .c-form__select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 20px center;
+            background-repeat: no-repeat;
+            background-size: 16px;
+            cursor: pointer;
+            padding-right: 50px;
+        }
+
+        .c-form__select option {
+            background-color: var(--dark-teal);
+            color: white;
+            padding: 12px;
+            font-weight: 500;
+        }
+
+        .c-form__textarea {
+            min-height: 120px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        /* Stunning gradient button */
+        .c-form__button {
+            background: linear-gradient(135deg, var(--white-color), #f0f0f0);
+            color: var(--primary-teal);
+            padding: 18px 40px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 700;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: 15px;
+        }
+
+        .c-form__button:hover {
+            background: linear-gradient(135deg, #ffffff, #e8e8e8);
+            transform: translateY(-3px);
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.2),
+                0 4px 12px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Staggered animations */
+        .c-form__group {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .c-form__group:nth-child(1) { animation-delay: 0.1s; }
+        .c-form__group:nth-child(2) { animation-delay: 0.2s; }
+        .c-form__group:nth-child(3) { animation-delay: 0.3s; }
+        .c-form__group:nth-child(4) { animation-delay: 0.4s; }
+        .c-form__group:nth-child(5) { animation-delay: 0.5s; }
+        .c-form__group:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Required field indicator */
+        .c-form__label.required::after {
+            content: " *";
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .c-form-container h3 {
+                font-size: 24px;
+                margin-bottom: 25px;
+            }
+            
+            .c-form {
+                gap: 20px;
+            }
+            
+            .c-form__input,
+            .c-form__textarea,
+            .c-form__select {
+                padding: 14px 16px;
+                font-size: 16px;
+            }
+            
+            .c-form__button {
+                padding: 16px 32px;
+                font-size: 15px;
+            }
+        }
+
+        /* --- FOOTER --- */
+        .site-footer {
+            padding: 80px 0 0 0;
+            background-color: var(--text-color);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 15px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            padding-bottom: 40px;
+        }
+
+        .footer-about h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--white-color);
+            margin: 0 0 20px 0;
+        }
+
+        .footer-about p {
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .footer-links h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--white-color);
+            margin: 0 0 25px 0;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--white-color);
+        }
+
+        .footer-bottom {
+            padding: 25px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            opacity: 0.8;
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 1200px) {
+            .hero-slide {
+                padding: 60px 50px;
+            }
+            
+            .hero-content h1 {
+                font-size: 42px;
+            }
+
+            .services-card-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            }
+        }
+
+        @media (max-width: 992px) {
+            /* FIXED: Show 6 items in 2x3 grid on mobile/tablet */
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .benefit-item-mobile-only {
+                display: block;
+            }
+
+            /* Mobile Navigation - FIXED Z-INDEX */
+            .mobile-menu-toggle {
+                display: flex;
+                z-index: 1002; /* Higher than everything */
+            }
+            
+            .main-nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 85%;
+                max-width: 400px;
+                height: 100vh;
+                background-color: var(--white-color);
+                z-index: 1001; /* Higher than banner */
+                transition: left 0.3s ease;
+                box-shadow: 2px 0 20px rgba(0,0,0,0.1);
+                padding-top: 80px;
+                overflow-y: auto; /* Allow scrolling if needed */
+            }
+            
+            .main-nav.active {
+                left: 0;
+            }
+            
+            .main-nav ul {
+                flex-direction: column;
+                padding: 0 30px;
+                gap: 0;
+            }
+            
+            .main-nav li {
+                border-bottom: 1px solid var(--border-color);
+            }
+            
+            .main-nav a {
+                display: block;
+                padding: 20px 0;
+                font-size: 18px;
+            }
+
+            /* Hide header actions on mobile */
+            .header-actions {
+                display: none;
+            }
+
+            /* Hero Section */
+            .hero-section {
+                height: calc(100vh - 200px); /* Change to 100vh */
+                padding: 10px 40px 0px 40px; /* Change to padding: 0; */
+            }
+
+            .hero-slider-container {
+                border-radius: 30px; /* Change to border-radius: 0; */
+            }
+            
+            .hero-slider-track {
+                height: 100%;
+            }
+            
+            .hero-slide {
+                height: 100%;
+                padding: 30px 40px;
+                gap: 25px;
+            }
+            
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            
+            .hero-content p {
+                font-size: 18px;
+            }
+
+            /* Services */
+            .services-card-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 30px;
+            }
+
+            /* Sliding Panels - DISABLE ON TABLET/MOBILE */
+            .sliding-section-wrapper {
+                display: none !important;
+            }
+
+            /* Stats */
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            
+            .stat-item:nth-child(2)::after {
+                display: none;
+            }
+            
+            /* Gallery */
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            /* Locations */
+            .locations-buttons-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .location-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            /* Contact */
+            .contact-main-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+                padding: 40px;
+            }
+
+            /* Footer */
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+
+            /* Pricing */
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            /* UGC */
+            .ugc-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            /* Consultation Banner */
+            .consultation-banner .container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .consultation-text {
+                font-size: 14px;
+            }
+
+            /* Hero */
+            .hero-section {
+                height: calc(100vh - 180px); /* Change to 100vh */
+                padding: 5px 0 0 0; /* Change to padding: 0; */
+            }
+
+            .hero-slider-container {
+                border-radius: 0; /* Already correct */
+            }
+                        
+            .hero-slider-track {
+                height: 100%;
+            }
+            
+            .hero-slide {
+                height: 100%;
+                padding: 40px 20px;
+                gap: 20px;
+                justify-content: center;
+            }
+            
+            .hero-content h1 {
+                font-size: 28px;
+                line-height: 1.2;
+                margin-bottom: 15px;
+            }
+            
+            .hero-content p {
+                font-size: 16px;
+                margin-bottom: 25px;
+                line-height: 1.5;
+            }
+
+            /* Section Spacing */
+            .our-services-section,
+            .benefits-section,
+            .sliding-section-wrapper,
+            .stats-section,
+            .gallery-section,
+            .locations-v2-section,
+            .contact-section,
+            .site-footer,
+            .pricing-section,
+            .faq-section,
+            .ugc-section {
+                padding: 60px 0;
+            }
+
+            /* Services */
+            .services-card-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .service-card-content {
+                padding: 25px;
+            }
+
+            .service-features li {
+                padding-left: 0;
+            }
+
+            /* Benefits */
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            /* Stats */
+            .stat-item {
+                padding: 25px 15px;
+            }
+
+            .stat-number {
+                font-size: 36px;
+            }
+
+            /* Contact */
+            .contact-main-grid {
+                padding: 30px 20px;
+            }
+
+            .contact-card {
+                gap: 15px;
+                margin-bottom: 25px;
+                padding: 15px;
+            }
+
+            .contact-card .icon-wrapper {
+                width: 40px;
+                height: 40px;
+            }
+
+            /* FAQ */
+            .faq-question {
+                padding: 20px;
+                font-size: 16px;
+            }
+
+            .faq-answer-content {
+                padding: 0 20px 20px;
+            }
+
+            /* Footer */
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 30px;
+            }
+
+            /* UGC */
+            .ugc-grid {
+                grid-template-columns: 1fr;
+                max-width: 100%;
+            }
+
+            .ugc-video-wrapper {
+                aspect-ratio: 9/16;
+            }
+        }
+
+        @media (max-width: 576px) {
+            /* Hero */
+            .hero-slide {
+                padding: 80px 15px 30px;
+                gap: 25px;
+            }
+            
+            .hero-content h1 {
+                font-size: 24px;
+                margin-bottom: 12px;
+            }
+            
+            .hero-content p {
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
+
+            /* Section Headers */
+            .section-header h2 {
+                font-size: 28px;
+            }
+            
+            .section-header .tagline {
+                font-size: 16px;
+            }
+
+            /* General Spacing */
+            .our-services-section,
+            .benefits-section,
+            .stats-section,
+            .gallery-section,
+            .locations-v2-section,
+            .contact-section,
+            .pricing-section,
+            .faq-section,
+            .ugc-section {
+                padding: 40px 0;
+            }
+
+            /* Benefits - keep 2 columns on all mobile sizes */
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .benefit-item .icon-wrapper {
+                width: 70px;
+                height: 70px;
+            }
+
+            .benefit-item svg {
+                width: 32px;
+                height: 32px;
+            }
+
+            /* Stats */
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .stat-item:not(:last-child)::after {
+                display: none;
+            }
+
+            .stat-number {
+                font-size: 32px;
+            }
+
+            .stat-text {
+                font-size: 14px;
+            }
+
+            /* Contact */
+            .contact-main-grid {
+                padding: 25px 15px;
+            }
+            
+            .contact-header h2 {
+                font-size: 28px;
+            }
+            
+            .contact-header p {
+                font-size: 16px;
+            }
+
+            /* Buttons */
+            .btn {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            .c-form__button {
+                padding: 14px 24px;
+            }
+            
+            /* Lightbox */
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+                width: 35px;
+                height: 35px;
+            }
+        }
+
+        /* Animation Classes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        /* Performance optimizations */
+        .sliding-panel-container {
+            will-change: transform;
+            transform: translateZ(0);
+        }
+
+        .shr-panel {
+            will-change: transform;
+            transform: translateZ(0) translateY(100%);
+            backface-visibility: hidden;
+        }
+
+        .about-us-panel {
+            will-change: auto;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+            
+            .shr-panel {
+                transform: none !important;
+                position: relative !important;
+                margin-top: 40px;
+            }
+        }
+
+        html .our-services-section {
+            background: #f8f9fa !important;
+            background-color: #f8f9fa !important;
+        }
+
+        html body .service-card {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+        }
+
+
+        @media (max-width: 768px) {
+            .consultation-banner {
+                padding: 10px 0; /* Smaller on mobile */
+            }
+            
+            .main-header {
+                top: 40px; /* Adjust for smaller banner */
+                padding: 12px 0;
+            }
+            
+            body {
+                padding-top: 95px; /* Recalculated total */
+            }
+        }
+
+        @media (max-width: 576px) {
+            .consultation-banner .container {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            body {
+                padding-top: 105px; /* Extra space for wrapped content */
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <!-- TOP CONSULTATION BANNER -->
+    <div class="consultation-banner">
+        <div class="container">
+            <span class="consultation-text">Bezplatná konzultácia a diagnostika pleti</span>
+            <a href="#contact" class="consultation-btn">REZERVOVAŤ TERAZ</a>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-placeholder">
+                <img style="height: 40px;" src="https://www.depilconcept.sk/images/logo.png">
+            </div>
+            
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <nav class="main-nav" id="main-nav">
+                <ul>
+                    <li><a href="#hero">Domov</a></li>
+                    <li><a href="#services">Ošetrenia</a></li>
+                    <li><a href="#about">Technológia</a></li>
+                    <li><a href="#gallery">Galéria</a></li>
+                    <li><a href="#locations">Pobočky</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#contact" class="btn btn-primary">Rezervácia</a>
+            </div>
+        </div>
+        
+        <div class="mobile-overlay" id="mobile-overlay"></div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero-section" id="hero">
+            <div class="hero-slider-container">
+                <video class="hero-video-bg" autoplay muted loop playsinline>
+                    <source src="https://www.pnhmedia.com/wp-content/uploads/2025/07/0710.mp4" type="video/mp4">
+                </video>
+                <div class="hero-slider-track">
+                    <div class="hero-slide">
+                        <div class="hero-content">
+                            <h1>Bezbolestná trvalá epilácia SHR in Motion</h1>
+                            <p>Dve moderné kliniky v Košiciach s písomnou zárukou výsledkov.</p>
+                            <a href="#contact" class="btn btn-secondary">ZISTITE VIAC →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- BENEFITS SECTION -->
+        <section class="benefits-section">
+            <div class="container">
+                <div class="section-header gsap-fade-up">
+                    <h2>Naše výhody</h2>
+                    <p class="tagline">Prečo si vybrať DepilConcept v Košiciach</p>
+                </div>
+                <div class="benefits-grid">
+                    <div class="benefit-item gsap-scale-up">
+                        <div class="icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg>
+                        </div>
+                        <p>Bezbolestnosť</p>
+                    </div>
+                    <div class="benefit-item gsap-scale-up">
+                        <div class="icon-wrapper">
+                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>
+                        </div>
+                        <p>Rýchlosť</p>
+                    </div>
+                    <div class="benefit-item gsap-scale-up">
+                        <div class="icon-wrapper">
+                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /><path d="M2 12h20"/></svg>
+                        </div>
+                        <p>Univerzálnosť</p>
+                    </div>
+                    <div class="benefit-item gsap-scale-up">
+                        <div class="icon-wrapper">
+                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                        </div>
+                        <p>Bezpečnosť</p>
+                    </div>
+                    <div class="benefit-item gsap-scale-up">
+                        <div class="icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                        </div>
+                        <p>Kvalita a certifikácia</p>
+                    </div>
+                    <div class="benefit-item benefit-item-mobile-only gsap-scale-up">
+                        <div class="icon-wrapper">
+                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <p>Lokalita</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SERVICES SECTION (REDESIGNED) -->
+        <section class="our-services-section" id="services">
+            <div class="container">
+                <div class="section-header gsap-fade-up">
+                    <p class="section-number">1</p>
+                    <h2>Naše služby</h2>
+                    <p class="tagline">Používame najmodernejšie technológie a osvedčené postupy pre dokonalé výsledky</p>
+                </div>
+                <div class="services-card-grid">
+                    <!-- Card 1 -->
+                    <div class="service-card gsap-fade-left">
+                        <div class="service-card-image">
+                            <img src="https://i.postimg.cc/RVQ1991R/vic-31.jpg" alt="Trvalá epilácia SHR in Motion">
+                        </div>
+                        <div class="service-card-content">
+                            <h3>Trvalá epilácia SHR in Motion</h3>
+                            <p>Najmodernejšia technológia Super Hair Removal s In Motion systémom pre bezbolestné a rýchle odstránenie chĺpkov.</p>
+                            <ul class="service-features">
+                                <li>Bezbolestná metóda</li>
+                                <li>Až 30% redukcia po 1. ošetrení</li>
+                                <li>Všetky typy pokožky</li>
+                                <li>Aj svetlé vlasy</li>
+                                <li>Písomná záruka výsledkov</li>
+                                <li>Možnosť platby v splátkach</li>
+                            </ul>
+                            <a href="#contact" class="btn-tertiary">REZERVOVAŤ KONZULTÁCIU</a>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="service-card gsap-fade-up">
+                        <div class="service-card-image">
+                            <img src="https://i.postimg.cc/DZddxTzm/vic-3.jpg" alt="Fototerapia E-LIGHT">
+                        </div>
+                         <div class="service-card-content">
+                            <h3>Fototerapia E-LIGHT</h3>
+                            <p>Kombinácia IPL a rádiofrekvencie pre komplexné omladenie pleti, liečbu akné, redukciu vrások a pigmentových škvŕn.</p>
+                             <ul class="service-features">
+                                <li>Omladenie pleti</li>
+                                <li>Redukcia vrások</li>
+                                <li>Liečba akné</li>
+                                <li>Odstránenie pigmentácie</li>
+                                <li>Viditeľné výsledky</li>
+                                <li>Bezbolestná aplikácia</li>
+                            </ul>
+                             <a href="#contact" class="btn-tertiary">REZERVOVAŤ KONZULTÁCIU</a>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="service-card gsap-fade-right">
+                        <div class="service-card-image">
+                             <img src="https://i.postimg.cc/RCdLf48D/vic-9.jpg" alt="Depilácia voskom a ďalšie služby">
+                        </div>
+                         <div class="service-card-content">
+                            <h3>Depilácia voskom a ďalšie</h3>
+                            <p>Kompletné spektrum kozmetických služieb vrátane depilácie voskom, LashLift ošetrení a úpravy obočia.</p>
+                             <ul class="service-features">
+                                <li>Horúci a studený vosk</li>
+                                <li>LashLift ošetrenie</li>
+                                <li>Úprava obočia</li>
+                                <li>Okamžité výsledky</li>
+                                <li>Profesionálny prístup</li>
+                                <li>Dlhotrvajúci efekt</li>
+                            </ul>
+                             <a href="#contact" class="btn-tertiary">REZERVOVAŤ KONZULTÁCIU</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRICING SECTION WITH SPECIAL ANIMATIONS -->
+        <section class="pricing-section">
+            <div class="container">
+                <div class="pricing-header gsap-fade-up">
+                    <h2>Cenník služieb</h2>
+                    <p>Transparentné ceny s písomnou zárukou výsledkov. Možnosť platby v splátkach.</p>
+                </div>
+                
+                <div class="pricing-grid">
+                    
+                    <div class="pricing-card pricing-card-1">
+                        <div class="pricing-title">Malé oblasti</div>
+                        <div class="pricing-subtitle">Horná pera, brada, underarms</div>
+                        <div class="pricing-price">15<span class="pricing-currency">€</span></div>
+                        <div class="pricing-period">za jedno ošetrenie</div>
+                        <ul class="pricing-features">
+                            <li>Bezbolestná SHR technológia</li>
+                            <li>Konzultácia zadarmo</li>
+                            <li>Písomná záruka výsledkov</li>
+                            <li>Možnosť platby v splátkach</li>
+                        </ul>
+                        <a href="#contact" class="pricing-btn">Rezervovať</a>
+                    </div>
+
+                    <div class="pricing-card featured pricing-card-2">
+                        <div class="pricing-title">Stredné oblasti</div>
+                        <div class="pricing-subtitle">Lýtka, predlaktia, bikini</div>
+                        <div class="pricing-price">35<span class="pricing-currency">€</span></div>
+                        <div class="pricing-period">za jedno ošetrenie</div>
+                        <ul class="pricing-features">
+                            <li>Najobľúbenejší balíček</li>
+                            <li>Rýchle ošetrenie (15-20 min)</li>
+                            <li>Viditeľné výsledky po 1. ošetrení</li>
+                            <li>Bezplatná diagnostika</li>
+                            <li>Sledovanie výsledkov</li>
+                        </ul>
+                        <a href="#contact" class="pricing-btn">Rezervovať</a>
+                    </div>
+
+                    <div class="pricing-card pricing-card-3">
+                        <div class="pricing-title">Veľké oblasti</div>
+                        <div class="pricing-subtitle">Celé nohy, celé ruky, chrbát</div>
+                        <div class="pricing-price">65<span class="pricing-currency">€</span></div>
+                        <div class="pricing-period">za jedno ošetrenie</div>
+                        <ul class="pricing-features">
+                            <li>Komplexné riešenie</li>
+                            <li>Úspora času v dlhodobom horizonte</li>
+                            <li>Profesionálny prístup</li>
+                            <li>Najvyššia účinnosť</li>
+                        </ul>
+                        <a href="#contact" class="pricing-btn">Rezervovať</a>
+                    </div>
+
+                </div>
+                
+                <div class="pricing-note gsap-fade-up">
+                    *Presné ceny sa určujú na základe individuálnej konzultácie. Ponúkame výhodné balíčky ošetrení a možnosť platby v splátkach bez úrokov.
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDING SECTION -->
+        <section class="sliding-section-wrapper" id="about">
+            <div class="container">
+                <div class="sliding-panel-container" id="sliding-container">
+                    <!-- Panel 1: About Us -->
+                    <div class="panel about-us-panel">
+                        <div class="section-header">
+                            <p class="section-number">2</p>
+                            <h2>O nás</h2>
+                            <p class="tagline">Vaše lokálne kliniky značky DepilConcept</p>
+                        </div>
+                        <div class="about-us-grid">
+                            <div class="about-us-text">
+                                <p>Dve moderné kliniky v Košiciach s medzinárodným know-how, ktoré prinášajú svetové štandardy v oblasti trvalej epilácie a kozmetických služieb priamo k vám. Naša filozofia je postavená na kombinácii najnovších technológií, individuálneho prístupu a garancie viditeľných výsledkov.</p>
+                            </div>
+                            <div class="about-us-points">
+                                <div class="point-item">
+                                    <div class="point-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                                    </div>
+                                    <div>
+                                        <h3>Kvalita a certifikácia</h3>
+                                        <p>Pracujeme podľa štandardov portugalskej značky DepilConcept s viac ako 17-ročnými skúsenosťami a písomnou zárukou výsledkov.</p>
+                                    </div>
+                                </div>
+                                <div class="point-item">
+                                    <div class="point-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                                    </div>
+                                    <div>
+                                        <h3>Lokalita a prístupnosť</h3>
+                                        <p>Dve strategicky umiestnené kliniky v Košiciach - v centre mesta (DUETT) a na Werferovej ulici (ASTON BUILDING).</p>
+                                    </div>
+                                </div>
+                                <div class="point-item">
+                                    <div class="point-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>
+                                    </div>
+                                    <div>
+                                        <h3>Skúsenosti a dôvera</h3>
+                                        <p>Pobočka DUETT bola historicky prvá pobočka na Slovensku, čo dokumentuje naše dlhoročné skúsenosti v regióne.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel 2: SHR Technology -->
+                    <div class="panel shr-panel">
+                         <div class="shr-grid">
+                            <div class="shr-text-content">
+                                <div class="section-header" style="text-align: left; margin-bottom: 30px;">
+                                    <h2 style="font-size: 32px; color: white !important;">SHR in Motion - Revolúcia v epilácii</h2>
+                                </div>
+                                <p>V našich košických klinikách používame najmodernejšiu technológiu Super Hair Removal s In Motion systémom. Táto metóda postupne zohrieva vlasové folikuly pomocou viacerých prekrývajúcich sa impulzov nízkej energie.</p>
+                                <p>Kľúčovou výhodou je "In Motion" systém - ošetrenie sa vykonáva v pohybe, čo zaručuje rovnomerné pokrytie a výrazne zvyšuje komfort pacienta. Môžeme účinne odstraňovať aj svetlé vlasy, čo bolo doteraz veľmi náročné.</p>
+                            </div>
+                            <div class="shr-benefits">
+                                <div class="shr-benefit-item">
+                                    <div class="shr-benefit-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                                    </div>
+                                    <div>
+                                        <h3>Bezbolestnosť</h3>
+                                        <p>Nízka energia impulzov eliminuje bolesť</p>
+                                    </div>
+                                </div>
+                                <div class="shr-benefit-item">
+                                    <div class="shr-benefit-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>
+                                    </div>
+                                    <div>
+                                        <h3>Rýchlosť</h3>
+                                        <p>Celé telo za 1 hodinu mesačne</p>
+                                    </div>
+                                </div>
+                                <div class="shr-benefit-item">
+                                    <div class="shr-benefit-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg>
+                                    </div>
+                                    <div>
+                                        <h3>Univerzálnosť</h3>
+                                        <p>Všetky typy pokožky a farieb vlasov</p>
+                                    </div>
+                                </div>
+                                <div class="shr-benefit-item">
+                                    <div class="shr-benefit-icon">
+                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                    </div>
+                                    <div>
+                                        <h3>Bezpečnosť</h3>
+                                        <p>Aj počas leta na opálenej pokožke</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STATS SECTION -->
+        <section class="stats-section" id="stats-section">
+            <div class="container">
+                <div class="section-header gsap-fade-up">
+                    <h2 style="color: white !important;">Lokálne výsledky s medzinárodnou kvalitou</h2>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item gsap-fade-up">
+                        <div class="stat-number" data-target="2">0</div>
+                        <div class="stat-text">moderné kliniky v Košiciach</div>
+                        <div class="stat-label">LOKÁLNE</div>
+                    </div>
+                    <div class="stat-item gsap-fade-up">
+                        <div class="stat-number" data-target="250">0</div>
+                        <div class="stat-text">kliník značky vo svete</div>
+                        <div class="stat-label">GLOBÁLNE</div>
+                    </div>
+                    <div class="stat-item gsap-fade-up">
+                        <div class="stat-number" data-target="5000">0</div>
+                        <div class="stat-text">spokojných klientov ročne</div>
+                        <div class="stat-label">KLIENTI</div>
+                    </div>
+                    <div class="stat-item gsap-fade-up">
+                        <div class="stat-number" data-target="17">0</div>
+                        <div class="stat-text">rokov skúseností značky</div>
+                        <div class="stat-label">EXPERTÍZA</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- UGC VIDEO SECTION (REDESIGNED - IPHONE STYLE) -->
+        <section class="ugc-section">
+            <div class="container">
+                <div class="ugc-header">
+                    <div class="section-header gsap-fade-up">
+                        <h2>Odborné rady a edukácia</h2>
+                        <p class="tagline">Pozrite si edukačné videá s našou špecialistkou Beou, ktorá vám vysvetlí všetko o SHR epilácii.</p>
+                    </div>
+                </div>
+                
+                <div class="ugc-grid">
+                    
+                    <div class="ugc-video-card gsap-fade-left">
+                        <div class="ugc-video-wrapper">
+                            <video class="ugc-video" preload="auto" muted>
+                                <source src="EDUKAČNÉ_VIDEO_BEA.mp4" type="video/mp4">
+                                Váš prehliadač nepodporuje video.
+                            </video>
+                            <div class="ugc-video-overlay">
+                                <button class="play-button"></button>
+                            </div>
+                        </div>
+                        <div class="ugc-video-info">
+                            <div class="ugc-video-title">Edukačné video s Beou</div>
+                            <div class="ugc-video-description">
+                                Edukačné video s našou odborníčkou Beou vám zrozumiteľne vysvetlí, ako prebieha SHR epilácia, aké má výhody a čo môžete očakávať po prvom ošetrení.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ugc-video-card gsap-fade-right">
+                        <div class="ugc-video-wrapper">
+                            <video class="ugc-video" preload="auto" muted>
+                                <source src="2_EDUKAČNÉ_VIDEO_BEA.mp4" type="video/mp4">
+                                Váš prehliadač nepodporuje video.
+                            </video>
+                            <div class="ugc-video-overlay">
+                                <button class="play-button"></button>
+                            </div>
+                        </div>
+                        <div class="ugc-video-info">
+                            <div class="ugc-video-title">Najčastejšie otázky o epilácii SHR</div>
+                            <div class="ugc-video-description">
+                                Odborníčka Bea odpovedá na najčastejšie otázky klientov o trvalej epilácii SHR – čo je možné očakávať, ako často je potrebné ošetrenie opakovať, pre koho je vhodné a aké sú benefity.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW GALLERY SECTION -->
+        <section class="gallery-section" id="gallery">
+            <div class="container">
+                <div class="section-header gsap-fade-up">
+                    <h2>Galéria našich priestorov</h2>
+                    <p class="tagline">Pozrite si moderné a príjemné prostredie našich kliník v Košiciach.</p>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item gsap-fade-up">
+                        <img src="https://i.postimg.cc/qB6DCC2v/aston.jpg" alt="Gallery Image 1 - Pobočka Werferova">
+                        <div class="gallery-item-overlay">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </div>
+                    </div>
+                    <div class="gallery-item gsap-fade-up">
+                        <img src="https://i.postimg.cc/XJpHLrhx/Duett-2.jpg" alt="Gallery Image 2 - Pobočka Duett">
+                        <div class="gallery-item-overlay">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </div>
+                    </div>
+                    <div class="gallery-item gsap-fade-up">
+                        <img src="https://i.postimg.cc/RVQ1991R/vic-31.jpg" alt="Gallery Image 3 - Detail ošetrenia">
+                        <div class="gallery-item-overlay">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </div>
+                    </div>
+                    <div class="gallery-item gsap-fade-up">
+                        <img src="https://i.postimg.cc/DZddxTzm/vic-3.jpg" alt="Gallery Image 4 - Prístroj na fototerapiu">
+                        <div class="gallery-item-overlay">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </div>
+                    </div>
+                    <div class="gallery-item gsap-fade-up">
+                        <img src="https://i.postimg.cc/RCdLf48D/vic-9.jpg" alt="Gallery Image 5 - Kozmetické produkty">
+                        <div class="gallery-item-overlay">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </div>
+                    </div>
+                     <div class="gallery-item gsap-fade-up">
+                        <img src="https://i.postimg.cc/y8yZ1Z3b/depil-interier.jpg" alt="Gallery Image 6 - Interiér kliniky">
+                        <div class="gallery-item-overlay">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- REDESIGNED LOCATIONS SECTION -->
+        <section class="locations-v2-section duett" id="locations">
+            <div class="container">
+                <div class="locations-v2-header gsap-fade-up">
+                    <h2>Naše pobočky v Košiciach</h2>
+                    <p>Nájdete nás na dvoch strategicky umiestnených adresách.</p>
+                </div>
+                
+                <div class="locations-buttons-container">
+                    <button class="location-btn active gsap-fade-left" data-location="duett">
+                        DepilConcept DUETT
+                    </button>
+                    <button class="location-btn gsap-fade-right" data-location="werferova">
+                        DepilConcept Werferova
+                    </button>
+                </div>
+
+                <div class="location-details">
+                    <div class="location-info active" id="info-duett">
+                        <h3>DepilConcept DUETT</h3>
+                        <p>Naša historicky prvá pobočka na Slovensku, umiestnená v srdci mesta.</p>
+                        <address>
+                            Štúrova 5/4, 040 01 Košice - Centrum<br>
+                            (Obchodné centrum DUETT)<br>
+                            Tel: +421 55 622 2891
+                        </address>
+                    </div>
+                    <div class="location-info" id="info-werferova">
+                        <h3>DepilConcept Werferova</h3>
+                        <p>Moderná klinika s kompletným spektrom služieb a najnovším vybavením.</p>
+                        <address>
+                            Werferova 3782/6, 040 11 Košice<br>
+                            (ASTON BUILDING)<br>
+                            Tel: +421 55 220 8920
+                        </address>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ SECTION -->
+        <section class="faq-section">
+            <div class="container">
+                <div class="section-header gsap-fade-up">
+                    <h2>Často kladené otázky</h2>
+                    <p class="tagline">Odpovede na najčastejšie otázky o našich službách</p>
+                </div>
+                <div class="faq-container">
+                    
+                    <div class="faq-item gsap-fade-up">
+                        <button class="faq-question">
+                            Je SHR epilácia skutočne bezbolestná?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                Áno, SHR in Motion technológia je navrhnutá tak, aby bola bezbolestná. Používa nízkoenergetické impulzy, ktoré postupne zohrejú vlasové folikuly bez nepríjemných pocitov. Väčšina klientov pociťuje len jemné teplo.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item gsap-fade-up">
+                        <button class="faq-question">
+                            Koľko ošetrení budem potrebovať?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                Počet ošetrení závisí od typu vlasov a oblasti. Obvykle je potrebných 6-10 ošetrení v intervaloch 4-6 týždňov. Už po prvom ošetrení môžete očakávať 20-30% redukciu chĺpkov.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item gsap-fade-up">
+                        <button class="faq-question">
+                            Je epilácia vhodná pre všetky typy pokožky?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                SHR technológia je bezpečná pre všetky typy pokožky, vrátane tmavej a opálenej. Na rozdiel od klasického IPL, SHR môžeme používať aj počas leta.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item gsap-fade-up">
+                        <button class="faq-question">
+                            Aká je písomná záruka výsledkov?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                Poskytujeme písomnú záruku na dosiahnutie minimálne 90% redukcie chĺpkov po dokončení kompletného balíčka ošetrení. V prípade nedosiahnutia výsledku, poskytneme dodatočné ošetrenia bez poplatku.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item gsap-fade-up">
+                        <button class="faq-question">
+                            Ako sa pripraviť na ošetrenie?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                24 hodín pred ošetrením si oholite ošetrovanú oblasť. Vyhnite sa opaľovaniu 2 týždne pred ošetrením. Nepijte alkohol a nepoužívajte parfumy na ošetrovanej oblasti v deň ošetrenia.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section class="contact-section" id="contact">
+            <div class="container">
+                <div class="contact-header gsap-fade-up">
+                    <h2>Kontaktujte nás</h2>
+                    <p>Sme tu pre vás a radi zodpovieme všetky vaše otázky o našich službách. Rezervujte si bezplatnú konzultáciu v jednej z našich košických kliník.</p>
+                </div>
+                
+                <div class="contact-main-grid">
+                    <div class="contact-details gsap-fade-left">
+                        <h3>Kontaktné údaje</h3>
+                        <div class="contact-card">
+                             <div class="icon-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            </div>
+                            <div>
+                                <h4>Hlavný kontakt</h4>
+                                <a href="mailto:info@depilconcept-kosice.sk">info@depilconcept-kosice.sk</a>
+                                <p><a href="tel:+421552208920">+421 55 220 8920</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                             <div class="icon-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </div>
+                            <div>
+                                <h4>DUETT - Centrum</h4>
+                                <address>
+                                    <p>Štúrova 5/4, 040 01 Košice</p>
+                                    <a href="tel:+421556222891">Tel: +421 55 622 2891</a>
+                                </address>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                             <div class="icon-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </div>
+                            <div>
+                                <h4>Werferova - ASTON</h4>
+                                <address>
+                                   <p>Werferova 3782/6, 040 11 Košice</p>
+                                   <a href="tel:+421552208920">Tel: +421 55 220 8920</a>
+                                </address>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="c-form-container gsap-fade-right">
+                        <h3>Napíšte nám správu</h3>
+                        <form id="contact-form" class="c-form" action="#" method="POST">
+                            
+                            <div class="c-form__group">
+                                <label for="name" class="c-form__label">Meno</label>
+                                <input type="text" id="name" name="name" class="c-form__input" placeholder="Vaše meno" required>
+                            </div>
+                    
+                            <div class="c-form__group">
+                                <label for="email" class="c-form__label">Email</label>
+                                <input type="email" id="email" name="email" class="c-form__input" placeholder="vas@email.com" required>
+                            </div>
+                    
+                            <div class="c-form__group">
+                                <label for="phone" class="c-form__label">Telefón</label>
+                                <input type="tel" id="phone" name="phone" class="c-form__input" placeholder="+421 xxx xxx xxx" required>
+                            </div>
+                    
+                            <div class="c-form__group">
+                                <label for="service-interest" class="c-form__label">O čo máte záujem?</label>
+                                <select id="service-interest" name="service_interest" class="c-form__select" required>
+                                    <option value="">Vyberte službu</option>
+                                    <option value="shr-epilacia">Trvalá epilácia SHR - bezbolestná</option>
+                                    <option value="elight-omladenie">E-LIGHT omladenie pleti</option>
+                                    <option value="depi-vosk">Depilácia voskom</option>
+                                    <option value="lashlift">LashLift ošetrenie</option>
+                                    <option value="komplet-balicek">Kompletný balíček služieb</option>
+                                    <option value="konzultacia">Len bezplatná konzultácia</option>
+                                </select>
+                            </div>
+                    
+                            <div class="c-form__group c-form__group--vertical">
+                                <label for="message" class="c-form__label">Vaša správa</label>
+                                <textarea id="message" name="message" rows="5" class="c-form__textarea" placeholder="Ak máte otázky alebo špecifické požiadavky, napíšte nám..."></textarea>
+                            </div>
+                    
+                            <div class="c-form__group c-form__group--submit">
+                                <button type="submit" class="c-form__button">Odoslať správu</button>
+                            </div>
+                    
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid gsap-fade-up">
+                <div class="footer-about">
+                    <h3>DepilConcept Košice</h3>
+                    <p>Dve moderné kliniky v Košiciach s medzinárodnou kvalitou značky DepilConcept. Špecializujeme sa na bezbolestné ošetrenia s písomnou zárukou výsledkov.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Služby</h4>
+                    <ul>
+                        <li><a href="#">Trvalá epilácia SHR</a></li>
+                        <li><a href="#">Fototerapia E-LIGHT</a></li>
+                        <li><a href="#">Depilácia voskom</a></li>
+                        <li><a href="#">LashLift</a></li>
+                        <li><a href="#">Úprava obočia</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Naše kliniky</h4>
+                     <ul>
+                        <li><a href="#">DUETT - Centrum</a></li>
+                        <li><a href="#">Werferova - ASTON</a></li>
+                        <li><a href="#">Prevádzkové hodiny</a></li>
+                        <li><a href="#">Parkovanie</a></li>
+                        <li><a href="#">Dostupnosť</a></li>
+                    </ul>
+                </div>
+
+                 <div class="footer-links">
+                    <h4>Podpora</h4>
+                    <ul>
+                        <li><a href="#">Kontakt</a></li>
+                        <li><a href="#">Rezervácia</a></li>
+                        <li><a href="#">Často kladené otázky</a></li>
+                        <li><a href="#">Podmienky použitia</a></li>
+                        <li><a href="#">Ochrana údajov</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom gsap-fade-up">
+            <div class="container">
+                <p>© 2025 DepilConcept Košice. Všetky práva vyhradené. | Značka DepilConcept založená v Portugalsku v roku 2007</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal HTML -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <img src="" alt="Lightbox image" id="lightbox-img">
+            <button class="lightbox-close" id="lightbox-close">&times;</button>
+        </div>
+    </div>
+
+
+    <!-- GSAP Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Register GSAP ScrollTrigger plugin
+            gsap.registerPlugin(ScrollTrigger);
+
+            // --- MOBILE MENU ---
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+            const mobileOverlay = document.getElementById('mobile-overlay');
+
+            if (mobileMenuToggle && mainNav && mobileOverlay) {
+                const toggleMenu = () => {
+                    const isActive = mainNav.classList.contains('active');
+                    mainNav.classList.toggle('active');
+                    mobileOverlay.classList.toggle('active');
+                    document.body.style.overflow = !isActive ? 'hidden' : '';
+                };
+
+                const closeMenu = () => {
+                    mainNav.classList.remove('active');
+                    mobileOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                };
+
+                mobileMenuToggle.addEventListener('click', toggleMenu);
+                mobileOverlay.addEventListener('click', closeMenu);
+
+                const navLinks = mainNav.querySelectorAll('a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        // Just close the menu, let browser handle navigation
+                        closeMenu();
+                    });
+                });
+
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth > 992) {
+                        closeMenu();
+                    }
+                });
+            }
+
+            // --- GSAP SCROLL ANIMATIONS ---
+            
+            // General fade up animations
+            gsap.utils.toArray('.gsap-fade-up').forEach((element, index) => {
+                gsap.fromTo(element, 
+                    {
+                        opacity: 0,
+                        y: 50
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: element,
+                            start: "top 80%",
+                            toggleActions: "play none none reverse"
+                        },
+                        delay: index * 0.1
+                    }
+                );
+            });
+
+            // Fade left animations
+            gsap.utils.toArray('.gsap-fade-left').forEach((element, index) => {
+                gsap.fromTo(element, 
+                    {
+                        opacity: 0,
+                        x: -50
+                    },
+                    {
+                        opacity: 1,
+                        x: 0,
+                        duration: 0.8,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: element,
+                            start: "top 80%",
+                            toggleActions: "play none none reverse"
+                        },
+                        delay: index * 0.1
+                    }
+                );
+            });
+
+            // Fade right animations
+            gsap.utils.toArray('.gsap-fade-right').forEach((element, index) => {
+                gsap.fromTo(element, 
+                    {
+                        opacity: 0,
+                        x: 50
+                    },
+                    {
+                        opacity: 1,
+                        x: 0,
+                        duration: 0.8,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: element,
+                            start: "top 80%",
+                            toggleActions: "play none none reverse"
+                        },
+                        delay: index * 0.1
+                    }
+                );
+            });
+
+            // Scale up animations for benefit items
+            gsap.utils.toArray('.gsap-scale-up').forEach((element, index) => {
+                gsap.fromTo(element, 
+                    {
+                        opacity: 0,
+                        scale: 0.8
+                    },
+                    {
+                        opacity: 1,
+                        scale: 1,
+                        duration: 0.6,
+                        ease: "back.out(1.7)",
+                        scrollTrigger: {
+                            trigger: element,
+                            start: "top 85%",
+                            toggleActions: "play none none reverse"
+                        },
+                        delay: index * 0.1
+                    }
+                );
+            });
+
+            // --- SPECIAL PRICING ANIMATIONS ---
+            const pricingCards = document.querySelectorAll('.pricing-card');
+            
+            // Set initial states for pricing cards
+            gsap.set('.pricing-card-1', { x: -100, opacity: 0 });
+            gsap.set('.pricing-card-2', { y: 50, opacity: 0 });
+            gsap.set('.pricing-card-3', { x: 100, opacity: 0 });
+
+            // Animate pricing cards when in view
+            ScrollTrigger.create({
+                trigger: '.pricing-section',
+                start: "top 70%",
+                onEnter: () => {
+                    // Animate from sides to center
+                    gsap.to('.pricing-card-1', {
+                        x: 0,
+                        opacity: 1,
+                        duration: 0.8,
+                        ease: "power2.out"
+                    });
+                    
+                    gsap.to('.pricing-card-2', {
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.8,
+                        ease: "power2.out",
+                        delay: 0.2
+                    });
+                    
+                    gsap.to('.pricing-card-3', {
+                        x: 0,
+                        opacity: 1,
+                        duration: 0.8,
+                        ease: "power2.out",
+                        delay: 0.1
+                    });
+                },
+                onLeaveBack: () => {
+                    // Reset positions when scrolling back up
+                    gsap.set('.pricing-card-1', { x: -100, opacity: 0 });
+                    gsap.set('.pricing-card-2', { y: 50, opacity: 0 });
+                    gsap.set('.pricing-card-3', { x: 100, opacity: 0 });
+                }
+            });
+
+            // --- SLIDING PANEL ANIMATION ---
+            const slidingContainer = document.querySelector('.sliding-panel-container');
+            const shrPanel = document.querySelector('.shr-panel');
+
+            if (slidingContainer && shrPanel) {
+                let tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: slidingContainer,
+                        pin: true,
+                        start: "center center",
+                        end: "+=100%",
+                        scrub: 0.5,
+                    }
+                });
+                
+                tl.to(shrPanel, {    
+                    yPercent: -100,
+                    ease: "none"
+                });
+
+                // Refresh ScrollTrigger on window resize with debouncing
+                let resizeTimer;
+                window.addEventListener('resize', () => {
+                    clearTimeout(resizeTimer);
+                    resizeTimer = setTimeout(() => {
+                        ScrollTrigger.refresh();
+                    }, 250);
+                });
+            }
+
+            // --- STATS COUNTER WITH SCROLL TRIGGER ---
+            const statsSection = document.getElementById('stats-section');
+            if (statsSection) {
+                const counters = statsSection.querySelectorAll('.stat-number');
+                let hasAnimated = false;
+
+                const animateCounter = (counter) => {
+                    const target = +counter.getAttribute('data-target');
+                    const duration = 2000;
+                    const startTime = performance.now();
+
+                    const updateCount = (currentTime) => {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                        const current = Math.floor(easeOutQuart * target);
+                        
+                        counter.textContent = current.toLocaleString('sk-SK');
+                        
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            let finalText = target.toLocaleString('sk-SK');
+                            if (counter.getAttribute('data-target') === '17') {
+                                 finalText += '+';
+                            }
+                            counter.textContent = finalText;
+                        }
+                    };
+                    requestAnimationFrame(updateCount);
+                };
+
+                ScrollTrigger.create({
+                    trigger: statsSection,
+                    start: "top 60%",
+                    onEnter: () => {
+                        if (!hasAnimated) {
+                            hasAnimated = true;
+                            counters.forEach(animateCounter);
+                        }
+                    }
+                });
+            }
+
+            // --- UGC VIDEO PLAY FUNCTIONALITY ---
+            const videoCards = document.querySelectorAll('.ugc-video-card');
+            videoCards.forEach(card => {
+                const video = card.querySelector('.ugc-video');
+                const overlay = card.querySelector('.ugc-video-overlay');
+                const playButton = card.querySelector('.play-button');
+
+                if (video && overlay && playButton) {
+                    // Force video to load first frame
+                    video.addEventListener('loadeddata', () => {
+                        video.currentTime = 2; // Seek to 2 seconds to show better frame
+                    });
+
+                    overlay.addEventListener('click', () => {
+                        video.currentTime = 0; // Reset to beginning
+                        video.muted = false; // Unmute for playback
+                        video.play();
+                        overlay.classList.add('hidden');
+                        video.setAttribute('controls', 'controls');
+                    });
+
+                    video.addEventListener('pause', () => {
+                        if (video.currentTime < video.duration) {
+                            overlay.classList.remove('hidden');
+                            video.removeAttribute('controls');
+                        }
+                    });
+
+                    video.addEventListener('ended', () => {
+                        overlay.classList.remove('hidden');
+                        video.removeAttribute('controls');
+                        video.currentTime = 0;
+                        video.muted = true; // Mute again
+                    });
+                }
+            });
+
+            // --- GALLERY LIGHTBOX FUNCTIONALITY ---
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            if (lightbox && lightboxImg && lightboxClose && galleryItems.length > 0) {
+                galleryItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        const imgSrc = item.querySelector('img').src;
+                        lightboxImg.src = imgSrc;
+                        lightbox.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    });
+                });
+
+                const closeLightbox = () => {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = '';
+                };
+
+                lightboxClose.addEventListener('click', closeLightbox);
+                lightbox.addEventListener('click', (e) => {
+                    if (e.target === lightbox) {
+                        closeLightbox();
+                    }
+                });
+            }
+
+
+            // --- LOCATIONS INTERACTION WITH BACKGROUND CHANGE ---
+            const locationBtns = document.querySelectorAll('.location-btn');
+            const locationInfos = document.querySelectorAll('.location-info');
+            const locationsSection = document.getElementById('locations');
+
+            locationBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const location = this.dataset.location;
+                    
+                    // Remove active class from all buttons and infos
+                    locationBtns.forEach(b => b.classList.remove('active'));
+                    locationInfos.forEach(info => info.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding info
+                    this.classList.add('active');
+                    const targetInfo = document.getElementById(`info-${location}`);
+                    if (targetInfo) {
+                        targetInfo.classList.add('active');
+                    }
+
+                    // Change background image by adding class to section
+                    locationsSection.classList.remove('duett', 'werferova');
+                    locationsSection.classList.add(location);
+                });
+            });
+
+            // --- FAQ ACCORDION ---
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(button => {
+                button.addEventListener('click', () => {
+                    const faqItem = button.parentElement;
+                    const isActive = faqItem.classList.contains('active');
+                    
+                    // Close all FAQ items
+                    document.querySelectorAll('.faq-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    
+                    // Open clicked item if it wasn't active
+                    if (!isActive) {
+                        faqItem.classList.add('active');
+                    }
+                });
+            });
+
+            // --- CONTACT FORM HANDLING ---
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const submitBtn = this.querySelector('.c-form__button');
+                    const originalText = submitBtn.textContent;
+                    
+                    submitBtn.textContent = 'Odosiela sa...';
+                    submitBtn.disabled = true;
+                    
+                    // Simulate form submission
+                    setTimeout(() => {
+                        submitBtn.textContent = 'Odoslané ✓';
+                        submitBtn.style.backgroundColor = '#28a745';
+                        submitBtn.style.color = 'white';
+
+                        setTimeout(() => {
+                            submitBtn.textContent = originalText;
+                            submitBtn.disabled = false;
+                            submitBtn.style.backgroundColor = '';
+                            submitBtn.style.color = '';
+                            this.reset();
+                        }, 2500);
+                    }, 1000);
+                });
+            }
+
+            // --- TEXT ANIMATIONS FOR HERO ---
+            const heroTitle = document.querySelector('.hero-content h1');
+            const heroText = document.querySelector('.hero-content p');
+            const heroBtn = document.querySelector('.hero-content .btn');
+
+            if (heroTitle && heroText && heroBtn) {
+                // Split text into spans for character animation
+                const splitText = (element) => {
+                    const text = element.textContent;
+                    element.innerHTML = '';
+                    [...text].forEach((char, index) => {
+                        const span = document.createElement('span');
+                        span.textContent = char === ' ' ? '\u00A0' : char;
+                        span.style.display = 'inline-block';
+                        span.style.opacity = '0';
+                        span.style.transform = 'translateY(20px)';
+                        element.appendChild(span);
+                    });
+                };
+
+                splitText(heroTitle);
+
+                // Animate hero text on load
+                const titleChars = heroTitle.querySelectorAll('span');
+                
+                gsap.to(titleChars, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.5,
+                    stagger: 0.02,
+                    ease: "power2.out",
+                    delay: 0.5
+                });
+
+                gsap.fromTo(heroText, 
+                    { opacity: 0, y: 30 },
+                    { 
+                        opacity: 1, 
+                        y: 0, 
+                        duration: 0.8, 
+                        ease: "power2.out", 
+                        delay: 1.2 
+                    }
+                );
+
+                gsap.fromTo(heroBtn, 
+                    { opacity: 0, scale: 0.8 },
+                    { 
+                        opacity: 1, 
+                        scale: 1, 
+                        duration: 0.6, 
+                        ease: "back.out(1.7)", 
+                        delay: 1.8 
+                    }
+                );
+            }
+
+            // --- REFRESH SCROLLTRIGGER ON RESIZE ---
+            window.addEventListener('resize', () => {
+                ScrollTrigger.refresh();
+            });
+
+            console.log('🎯 All GSAP animations initialized successfully!');
+
+        }); // End of DOMContentLoaded
+
+
+        // Dynamic header functionality
+        let lastScrollY = window.scrollY;
+        let isScrolling = false;
+
+        const handleScroll = () => {
+            const header = document.querySelector('.main-header');
+            const currentScrollY = window.scrollY;
+            const scrollDifference = Math.abs(currentScrollY - lastScrollY);
+            
+            if (scrollDifference < 5) return;
+            
+            if (currentScrollY <= 100) {
+                header.classList.remove('header-hidden', 'header-scrolled');
+                lastScrollY = currentScrollY;
+                return;
+            }
+            
+            if (currentScrollY > lastScrollY) {
+                header.classList.add('header-hidden');
+                header.classList.remove('header-scrolled');
+            } else {
+                header.classList.remove('header-hidden');
+                header.classList.add('header-scrolled');
+            }
+            
+            lastScrollY = currentScrollY;
+        };
+
+        const throttledHandleScroll = () => {
+            if (!isScrolling) {
+                window.requestAnimationFrame(() => {
+                    handleScroll();
+                    isScrolling = false;
+                });
+                isScrolling = true;
+            }
+        };
+
+        window.addEventListener('scroll', throttledHandleScroll);
+        handleScroll();
+    </script>
+
+</body>
+</html>
