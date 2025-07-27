@@ -640,12 +640,13 @@
             transform: translateY(-2px);
         }
 
-        /* === PRICING SECTION WITH SPECIAL ANIMATIONS === */
+        /* === PRICING SECTION WITH CUSTOM CONTENT === */
         .pricing-section {
             padding: 100px 0;
             background: linear-gradient(135deg, var(--primary-teal), var(--dark-teal));
             color: var(--white-color);
             overflow: hidden;
+            text-align: center;
         }
 
         .pricing-header {
@@ -667,118 +668,44 @@
             margin: 0 auto;
         }
 
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-
-        .pricing-card {
+        .pricing-content {
+            max-width: 800px;
+            margin: 0 auto;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-radius: 24px;
-            padding: 40px 30px;
-            text-align: center;
+            padding: 60px 40px;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
         }
 
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .pricing-card.featured {
-            border: 2px solid var(--white-color);
-            transform: scale(1.05);
-        }
-
-        .pricing-title {
+        .pricing-custom-text {
             font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 10px;
+            font-weight: 600;
+            line-height: 1.6;
+            margin-bottom: 40px;
             color: var(--white-color);
         }
 
-        .pricing-subtitle {
-            font-size: 14px;
-            opacity: 0.8;
-            margin-bottom: 25px;
-        }
-
-        .pricing-price {
-            font-size: 48px;
-            font-weight: 700;
-            color: var(--white-color);
-            margin-bottom: 5px;
-        }
-
-        .pricing-currency {
-            font-size: 24px;
-            opacity: 0.8;
-        }
-
-        .pricing-period {
-            font-size: 14px;
-            opacity: 0.7;
-            margin-bottom: 30px;
-        }
-
-        .pricing-features {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 30px 0;
-        }
-
-        .pricing-features li {
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .pricing-features li:last-child {
-            border-bottom: none;
-        }
-
-        .pricing-features li::before {
-            content: '✓';
-            color: var(--white-color);
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-
-        .pricing-btn {
+        .pricing-consultation-btn {
             background: var(--white-color);
             color: var(--primary-teal);
-            padding: 14px 30px;
+            padding: 18px 40px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 16px;
+            font-size: 18px;
             transition: all 0.3s ease;
             display: inline-block;
             border: 2px solid var(--white-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .pricing-btn:hover {
+        .pricing-consultation-btn:hover {
             background: transparent;
             color: var(--white-color);
-            transform: translateY(-2px);
-        }
-
-        .pricing-note {
-            text-align: center;
-            font-size: 14px;
-            opacity: 0.8;
-            margin-top: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
         /* --- SLIDING SECTION (FIXED PADDING) --- */
@@ -1145,6 +1072,104 @@
             font-size: 16px;
             color: var(--text-light) !important; /* Force gray text */
             line-height: 1.6;
+        }
+
+        /* === REVIEWS SECTION === */
+        .reviews-section {
+            padding: 100px 0;
+            background-color: var(--light-bg) !important;
+            color: var(--text-color) !important;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background: var(--white-color);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid var(--border-color);
+        }
+
+        .review-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--primary-teal);
+        }
+
+        .review-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 60px;
+            font-weight: 700;
+            color: var(--primary-teal);
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        .review-content {
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .review-text {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text-color);
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .review-rating {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+
+        .star {
+            color: #ffd700;
+            font-size: 18px;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-teal), var(--dark-teal));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white-color);
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .review-author-info h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-color);
+            margin: 0 0 4px 0;
+        }
+
+        .review-author-info p {
+            font-size: 14px;
+            color: var(--text-light);
+            margin: 0;
         }
 
         /* === NEW GALLERY SECTION === */
@@ -1982,6 +2007,12 @@
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
 
+            /* Reviews */
+            .reviews-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
             /* Locations */
             .locations-buttons-container {
                 flex-direction: column;
@@ -2005,16 +2036,6 @@
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 40px;
-            }
-
-            /* Pricing */
-            .pricing-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .pricing-card.featured {
-                transform: none;
             }
 
             /* UGC */
@@ -2064,6 +2085,7 @@
                 font-size: 28px;
                 line-height: 1.2;
                 margin-bottom: 15px;
+                white-space: nowrap; /* Prevent text breaking */
             }
             
             .hero-content p {
@@ -2083,7 +2105,8 @@
             .site-footer,
             .pricing-section,
             .faq-section,
-            .ugc-section {
+            .ugc-section,
+            .reviews-section {
                 padding: 60px 0;
             }
 
@@ -2158,18 +2181,35 @@
             .ugc-video-wrapper {
                 aspect-ratio: 9/16;
             }
+
+            /* Reviews */
+            .reviews-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            /* Pricing */
+            .pricing-content {
+                padding: 40px 25px;
+            }
+
+            .pricing-custom-text {
+                font-size: 20px;
+            }
         }
 
         @media (max-width: 576px) {
-            /* Hero */
+            /* Hero - fix line breaking for SHR text */
             .hero-slide {
                 padding: 80px 15px 30px;
                 gap: 25px;
             }
             
             .hero-content h1 {
-                font-size: 24px;
+                font-size: 22px;
                 margin-bottom: 12px;
+                white-space: normal; /* Allow normal wrapping on small screens */
+                line-height: 1.3;
             }
             
             .hero-content p {
@@ -2195,7 +2235,8 @@
             .contact-section,
             .pricing-section,
             .faq-section,
-            .ugc-section {
+            .ugc-section,
+            .reviews-section {
                 padding: 40px 0;
             }
 
@@ -2262,6 +2303,20 @@
                 right: 10px;
                 width: 35px;
                 height: 35px;
+            }
+
+            /* Reviews */
+            .review-card {
+                padding: 25px 20px;
+            }
+
+            /* Pricing */
+            .pricing-content {
+                padding: 30px 20px;
+            }
+
+            .pricing-custom-text {
+                font-size: 18px;
             }
         }
 
@@ -2353,6 +2408,15 @@
             }
         }
 
+        /* Better line breaking for hero title on mobile */
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 20px;
+                line-height: 1.4;
+                word-break: break-word;
+                hyphens: auto;
+            }
+        }
 
     </style>
 </head>
@@ -2406,7 +2470,7 @@
                 <div class="hero-slider-track">
                     <div class="hero-slide">
                         <div class="hero-content">
-                            <h1>Bezbolestná trvalá epilácia SHR in Motion</h1>
+                            <h1>Bezbolestná trvalá epilácia SHR&nbsp;in&nbsp;Motion</h1>
                             <p>Dve moderné kliniky v Košiciach s písomnou zárukou výsledkov.</p>
                             <a href="#contact" class="btn btn-secondary">ZISTITE VIAC →</a>
                         </div>
@@ -2463,7 +2527,7 @@
             </div>
         </section>
         
-        <!-- SERVICES SECTION (REDESIGNED) -->
+        <!-- SERVICES SECTION (REDESIGNED - REMOVED 3rd CARD) -->
         <section class="our-services-section" id="services">
             <div class="container">
                 <div class="section-header gsap-fade-up">
@@ -2510,30 +2574,11 @@
                              <a href="#contact" class="btn-tertiary">REZERVOVAŤ KONZULTÁCIU</a>
                         </div>
                     </div>
-                    <!-- Card 3 -->
-                    <div class="service-card gsap-fade-right">
-                        <div class="service-card-image">
-                             <img src="https://i.postimg.cc/RCdLf48D/vic-9.jpg" alt="Depilácia voskom a ďalšie služby">
-                        </div>
-                         <div class="service-card-content">
-                            <h3>Depilácia voskom a ďalšie</h3>
-                            <p>Kompletné spektrum kozmetických služieb vrátane depilácie voskom, LashLift ošetrení a úpravy obočia.</p>
-                             <ul class="service-features">
-                                <li>Horúci a studený vosk</li>
-                                <li>LashLift ošetrenie</li>
-                                <li>Úprava obočia</li>
-                                <li>Okamžité výsledky</li>
-                                <li>Profesionálny prístup</li>
-                                <li>Dlhotrvajúci efekt</li>
-                            </ul>
-                             <a href="#contact" class="btn-tertiary">REZERVOVAŤ KONZULTÁCIU</a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- PRICING SECTION WITH SPECIAL ANIMATIONS -->
+        <!-- PRICING SECTION WITH CUSTOM CONTENT -->
         <section class="pricing-section">
             <div class="container">
                 <div class="pricing-header gsap-fade-up">
@@ -2541,55 +2586,11 @@
                     <p>Transparentné ceny s písomnou zárukou výsledkov. Možnosť platby v splátkach.</p>
                 </div>
                 
-                <div class="pricing-grid">
-                    
-                    <div class="pricing-card pricing-card-1">
-                        <div class="pricing-title">Malé oblasti</div>
-                        <div class="pricing-subtitle">Horná pera, brada, underarms</div>
-                        <div class="pricing-price">15<span class="pricing-currency">€</span></div>
-                        <div class="pricing-period">za jedno ošetrenie</div>
-                        <ul class="pricing-features">
-                            <li>Bezbolestná SHR technológia</li>
-                            <li>Konzultácia zadarmo</li>
-                            <li>Písomná záruka výsledkov</li>
-                            <li>Možnosť platby v splátkach</li>
-                        </ul>
-                        <a href="#contact" class="pricing-btn">Rezervovať</a>
+                <div class="pricing-content gsap-fade-up">
+                    <div class="pricing-custom-text">
+                        Vašu cenu Vám pripravíme na mieru a podľa požiadaviek priamo na konzultácii
                     </div>
-
-                    <div class="pricing-card featured pricing-card-2">
-                        <div class="pricing-title">Stredné oblasti</div>
-                        <div class="pricing-subtitle">Lýtka, predlaktia, bikini</div>
-                        <div class="pricing-price">35<span class="pricing-currency">€</span></div>
-                        <div class="pricing-period">za jedno ošetrenie</div>
-                        <ul class="pricing-features">
-                            <li>Najobľúbenejší balíček</li>
-                            <li>Rýchle ošetrenie (15-20 min)</li>
-                            <li>Viditeľné výsledky po 1. ošetrení</li>
-                            <li>Bezplatná diagnostika</li>
-                            <li>Sledovanie výsledkov</li>
-                        </ul>
-                        <a href="#contact" class="pricing-btn">Rezervovať</a>
-                    </div>
-
-                    <div class="pricing-card pricing-card-3">
-                        <div class="pricing-title">Veľké oblasti</div>
-                        <div class="pricing-subtitle">Celé nohy, celé ruky, chrbát</div>
-                        <div class="pricing-price">65<span class="pricing-currency">€</span></div>
-                        <div class="pricing-period">za jedno ošetrenie</div>
-                        <ul class="pricing-features">
-                            <li>Komplexné riešenie</li>
-                            <li>Úspora času v dlhodobom horizonte</li>
-                            <li>Profesionálny prístup</li>
-                            <li>Najvyššia účinnosť</li>
-                        </ul>
-                        <a href="#contact" class="pricing-btn">Rezervovať</a>
-                    </div>
-
-                </div>
-                
-                <div class="pricing-note gsap-fade-up">
-                    *Presné ceny sa určujú na základe individuálnej konzultácie. Ponúkame výhodné balíčky ošetrení a možnosť platby v splátkach bez úrokov.
+                    <a href="#contact" class="pricing-consultation-btn">Bezplatná konzultácia</a>
                 </div>
             </div>
         </section>
@@ -2778,6 +2779,152 @@
             </div>
         </section>
 
+        <!-- REVIEWS SECTION -->
+        <section class="reviews-section">
+            <div class="container">
+                <div class="section-header gsap-fade-up">
+                    <h2>Recenzie našich klientov</h2>
+                    <p class="tagline">Prečítajte si, čo hovoria naši spokojní klienti o našich službách</p>
+                </div>
+                
+                <div class="reviews-grid">
+                    
+                    <div class="review-card gsap-fade-left">
+                        <div class="review-content">
+                            <div class="review-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                            <p class="review-text">
+                                Perfektný prístup, úplne bezbolestné ošetrenie a viditeľné výsledky už po prvom ošetrení. Konečne som našla kliniku, kde vedia čo robia. Určite odporúčam!
+                            </p>
+                        </div>
+                        <div class="review-author">
+                            <div class="review-avatar">M</div>
+                            <div class="review-author-info">
+                                <h4>Martina K.</h4>
+                                <p>Klientka od roku 2023</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card gsap-fade-up">
+                        <div class="review-content">
+                            <div class="review-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                            <p class="review-text">
+                                SHR epilácia v DepilConcepte bola najlepším rozhodnutím. Personál je profesionálny, prostredie čisté a moderne vybavené. Po 6 ošetreniach mám skoro 95% redukciu chĺpkov.
+                            </p>
+                        </div>
+                        <div class="review-author">
+                            <div class="review-avatar">A</div>
+                            <div class="review-author-info">
+                                <h4>Adriana S.</h4>
+                                <p>Klientka od roku 2022</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card gsap-fade-right">
+                        <div class="review-content">
+                            <div class="review-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                            <p class="review-text">
+                                Skvelá skúsenosť! Bola som skeptická ohľadom bezbolestnosti, ale skutočne to vôbec nebolelo. Navyše, ceny sú férové a môžem platiť v splátkach. Vrelo odporúčam pobočku na Werferovej.
+                            </p>
+                        </div>
+                        <div class="review-author">
+                            <div class="review-avatar">K</div>
+                            <div class="review-author-info">
+                                <h4>Katarína M.</h4>
+                                <p>Klientka od roku 2024</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card gsap-fade-left">
+                        <div class="review-content">
+                            <div class="review-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                            <p class="review-text">
+                                Excellent service! Som z Prešova a cestujem do Košíc len kvôli DepilConceptu. Kvalita služieb je na svetovej úrovni, personál hovorí aj anglicky. Highly recommended!
+                            </p>
+                        </div>
+                        <div class="review-author">
+                            <div class="review-avatar">E</div>
+                            <div class="review-author-info">
+                                <h4>Eva T.</h4>
+                                <p>Klientka od roku 2023</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card gsap-fade-up">
+                        <div class="review-content">
+                            <div class="review-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                            <p class="review-text">
+                                Dlhodobo som hľadala spoľahlivú kliniku. V DepilConcepte som našla presne to, čo som potrebovala - profesionálny prístup, moderné vybavenie a hlavne výsledky, ktoré sa dajú vidieť.
+                            </p>
+                        </div>
+                        <div class="review-author">
+                            <div class="review-avatar">L</div>
+                            <div class="review-author-info">
+                                <h4>Lucia H.</h4>
+                                <p>Klientka od roku 2022</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card gsap-fade-right">
+                        <div class="review-content">
+                            <div class="review-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                            <p class="review-text">
+                                Perfektné! Už po treťom ošetrení vidím obrovský rozdiel. Personál je milý, vždy mi vysvetlia postup a poradí. Cenovo je to tiež veľmi prijateľné. Ďakujem!
+                            </p>
+                        </div>
+                        <div class="review-author">
+                            <div class="review-avatar">Z</div>
+                            <div class="review-author-info">
+                                <h4>Zuzana V.</h4>
+                                <p>Klientka od roku 2024</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
         <!-- NEW GALLERY SECTION -->
         <section class="gallery-section" id="gallery">
             <div class="container">
@@ -2866,7 +3013,7 @@
             </div>
         </section>
 
-        <!-- FAQ SECTION -->
+        <!-- FAQ SECTION (REDUCED) -->
         <section class="faq-section">
             <div class="container">
                 <div class="section-header gsap-fade-up">
@@ -2919,18 +3066,6 @@
                         <div class="faq-answer">
                             <div class="faq-answer-content">
                                 Poskytujeme písomnú záruku na dosiahnutie minimálne 90% redukcie chĺpkov po dokončení kompletného balíčka ošetrení. V prípade nedosiahnutia výsledku, poskytneme dodatočné ošetrenia bez poplatku.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="faq-item gsap-fade-up">
-                        <button class="faq-question">
-                            Ako sa pripraviť na ošetrenie?
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">
-                                24 hodín pred ošetrením si oholite ošetrovanú oblasť. Vyhnite sa opaľovaniu 2 týždne pred ošetrením. Nepijte alkohol a nepoužívajte parfumy na ošetrovanej oblasti v deň ošetrenia.
                             </div>
                         </div>
                     </div>
@@ -3011,8 +3146,6 @@
                                     <option value="">Vyberte službu</option>
                                     <option value="shr-epilacia">Trvalá epilácia SHR - bezbolestná</option>
                                     <option value="elight-omladenie">E-LIGHT omladenie pleti</option>
-                                    <option value="depi-vosk">Depilácia voskom</option>
-                                    <option value="lashlift">LashLift ošetrenie</option>
                                     <option value="komplet-balicek">Kompletný balíček služieb</option>
                                     <option value="konzultacia">Len bezplatná konzultácia</option>
                                 </select>
@@ -3049,9 +3182,9 @@
                     <ul>
                         <li><a href="#">Trvalá epilácia SHR</a></li>
                         <li><a href="#">Fototerapia E-LIGHT</a></li>
-                        <li><a href="#">Depilácia voskom</a></li>
-                        <li><a href="#">LashLift</a></li>
-                        <li><a href="#">Úprava obočia</a></li>
+                        <li><a href="#">Bezplatná konzultácia</a></li>
+                        <li><a href="#">Individuálne balíčky</a></li>
+                        <li><a href="#">Platba v splátkach</a></li>
                     </ul>
                 </div>
 
@@ -3139,6 +3272,7 @@
                     }
                 });
             }
+            
 
             // --- GSAP SCROLL ANIMATIONS ---
             
@@ -3228,51 +3362,6 @@
                         delay: index * 0.1
                     }
                 );
-            });
-
-            // --- SPECIAL PRICING ANIMATIONS ---
-            const pricingCards = document.querySelectorAll('.pricing-card');
-            
-            // Set initial states for pricing cards
-            gsap.set('.pricing-card-1', { x: -100, opacity: 0 });
-            gsap.set('.pricing-card-2', { y: 50, opacity: 0 });
-            gsap.set('.pricing-card-3', { x: 100, opacity: 0 });
-
-            // Animate pricing cards when in view
-            ScrollTrigger.create({
-                trigger: '.pricing-section',
-                start: "top 70%",
-                onEnter: () => {
-                    // Animate from sides to center
-                    gsap.to('.pricing-card-1', {
-                        x: 0,
-                        opacity: 1,
-                        duration: 0.8,
-                        ease: "power2.out"
-                    });
-                    
-                    gsap.to('.pricing-card-2', {
-                        y: 0,
-                        opacity: 1,
-                        duration: 0.8,
-                        ease: "power2.out",
-                        delay: 0.2
-                    });
-                    
-                    gsap.to('.pricing-card-3', {
-                        x: 0,
-                        opacity: 1,
-                        duration: 0.8,
-                        ease: "power2.out",
-                        delay: 0.1
-                    });
-                },
-                onLeaveBack: () => {
-                    // Reset positions when scrolling back up
-                    gsap.set('.pricing-card-1', { x: -100, opacity: 0 });
-                    gsap.set('.pricing-card-2', { y: 50, opacity: 0 });
-                    gsap.set('.pricing-card-3', { x: 100, opacity: 0 });
-                }
             });
 
             // --- SLIDING PANEL ANIMATION ---
